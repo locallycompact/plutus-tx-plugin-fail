@@ -1,0 +1,34 @@
+cabal-version: 2.4
+name:          plutus-tx-plugin-fail
+version:       0.1.0.0
+license:
+license-files: LICENSE
+author:        Daniel Firth
+
+flag defer-plugin-errors
+  description:
+    Defer errors from the plugin, useful for things like Haddock that can't handle it.
+
+  default:     False
+  manual:      True
+
+library
+  default-language: GHC2021
+  ghc-options:
+    -Weverything -Werror -Wno-all-missed-specialisations
+    -Wno-missing-import-lists -Wno-missing-local-signatures
+    -Wno-missing-safe-haskell-mode -Wno-prepositive-qualified-module
+    -Wno-unused-packages -Wno-safe -Wno-unsafe -fobject-code
+    -fno-ignore-interface-pragmas -fno-omit-interface-pragmas
+    -fno-specialise -fno-strictness
+
+  build-depends:
+    , base               >=4.9 && <5
+    , plutus-ledger-api
+    , plutus-tx
+    , plutus-tx-plugin
+
+  hs-source-dirs:  src
+
+  if flag(defer-plugin-errors)
+    ghc-options: -fplugin-opt PlutusTx.Plugin:defer-errors

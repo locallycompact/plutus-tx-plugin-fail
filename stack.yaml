@@ -1,0 +1,63 @@
+resolver: nightly-2022-06-22
+packages:
+- .
+
+extra-deps:
+- canonical-json-0.6.0.0
+- dom-lt-0.2.3
+- int-cast-0.2.0.0
+- lazy-search-0.1.2.1
+- nothunks-0.1.3
+- protolude-0.3.1
+
+- git: https://github.com/Quid2/flat.git
+  commit: 559617e058098b776b431e2a67346ad3adea2440
+- git: https://github.com/input-output-hk/cardano-crypto.git
+  commit: 07397f0e50da97eaa0575d93bee7ac4b2b2576ec
+  # nix-sha256: sha256-oxIOVlgm07FAEmgGRF1C2me9TXqVxQulEOcJ22zpTRs=
+- git: https://github.com/input-output-hk/cardano-base
+  commit: 1587462ac8b2e50af2691f5ad93d3c2aa4674ed1
+  subdirs:
+    - base-deriving-via
+    - binary
+    - binary/test
+    - cardano-crypto-class
+    - cardano-crypto-praos
+    - cardano-crypto-tests
+    - measures
+    - orphans-deriving-via
+    - slotting
+    - strict-containers
+- git: https://github.com/mlabs-haskell/cardano-prelude
+  commit: 713c7ae79a4d538fcd653c976a652913df1567b9
+  subdirs:
+    - cardano-prelude
+    - cardano-prelude-test
+  # nix-sha256: sha256-E+YSfUsvxdoOr7n7fz4xd7zb4z8XBRGNYOKipc2A1pw=
+- git: https://github.com/input-output-hk/Win32-network
+  commit: 3825d3abf75f83f406c1f7161883c438dac7277d
+- git: https://github.com/input-output-hk/plutus
+  commit: 64ab860d953cd0eb8aa35801e36cce280df920f4
+  subdirs:
+    - plutus-core
+    - plutus-ledger-api
+    - plutus-tx
+    - plutus-tx-plugin
+    - word-array
+    - prettyprinter-configurable
+    - stubs/plutus-ghc-stub
+  # nix-sha256: sha256-HpI/ZXoj6SHlDYZQNkbzWEVMyPfZLrO8itUWQHD/I9Y=
+- git: https://github.com/haskell-effectful/effectful
+  commit: f95b08cd3f33695c0ddef2db61f009a0c6a8e7aa
+  subdirs:
+  - effectful-core
+  - effectful-th
+  - effectful
+
+flags:
+  cardano-prelude:
+    development: true
+  cardano-binary:
+    development: true
+  cardano-crypto-class:
+    development: true
